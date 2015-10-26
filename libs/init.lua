@@ -27,6 +27,9 @@ function wait_for_network()
         nats.connect(config.nats.client)
 
         tmr.alarm(0, 1000, 1, sensor_data_to_nats)
+
+        -- Reset on disconnected
+        nats.on_disconnect(node.restart)
     end
 end
 

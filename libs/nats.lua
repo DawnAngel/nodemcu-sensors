@@ -107,4 +107,8 @@ function nats.pong()
     do_request(nats.socket, 'PONG\r\n')
 end
 
+function nats.on_disconnect(callback)
+    nats.socket:on("disconnection", callback)
+end
+
 return nats
